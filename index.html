@@ -3,6 +3,7 @@
 <html lang="pt-BR">
 
 <head>
+<script>document.documentElement.classList.add("session-checking");</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1473,7 +1474,17 @@ footer p{
 
 }
 
+
+
+html.session-checking body{
+    visibility:hidden;
+}
+
 </style>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- UI compartilhada centralizada em css/style.css -->
 
 </head>
 
@@ -1588,7 +1599,7 @@ footer p{
         <div class="hero-buttons">
 
             <a
-                href="login.html"
+                href="./login.html"
                 class="btn-primary"
             >
                 Continuar para o login →
@@ -2300,7 +2311,7 @@ footer p{
 
 
     <a
-        href="login.html"
+        href="./login.html"
         class="btn-primary"
     >
         Continuar para o login →
@@ -2336,7 +2347,7 @@ footer p{
 
     Desenvolvido por
     <strong>
-        Sérgio and Gabriel
+        Grupo MonteiroMelo
     </strong>
 
     <br>
@@ -2567,6 +2578,27 @@ document.addEventListener(
     }
 );
 
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script>
+(async function verificarSessaoInicial(){
+    try{
+        if(typeof banco !== "undefined" && banco.auth){
+            const {data} = await banco.auth.getSession();
+            if(data && data.session){
+                window.location.replace("base.html");
+                return;
+            }
+        }
+    }catch(erro){
+        console.error("Erro ao verificar sessão inicial:", erro);
+    }finally{
+        document.documentElement.classList.remove("session-checking");
+    }
+})();
 </script>
 
 </body>
