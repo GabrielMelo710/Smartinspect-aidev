@@ -1,4 +1,3 @@
-
 // ======================================
 // SMARTINSPECT AI
 // AUTENTICAÇÃO E PERMISSÕES
@@ -378,4 +377,3 @@ document.addEventListener(
 
     }
 );
-```
