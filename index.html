@@ -4,7 +4,7 @@
 
 <head>
 <script>document.documentElement.classList.add("session-checking");</script>
-<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2590,7 +2590,7 @@ document.addEventListener(
         if(typeof banco !== "undefined" && banco.auth){
             const {data} = await banco.auth.getSession();
             if(data && data.session){
-                window.location.replace("base.html");
+                window.location.replace("dashboard.html");
                 return;
             }
         }
