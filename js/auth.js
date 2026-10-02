@@ -1,3 +1,4 @@
+```javascript
 // ======================================
 // SMARTINSPECT AI
 // AUTENTICAÇÃO E PERMISSÕES
@@ -10,8 +11,7 @@
 
 function getUsuario() {
 
-    const usuario =
-        localStorage.getItem("usuario");
+    const usuario = localStorage.getItem("usuario");
 
     if (!usuario) {
         return null;
@@ -23,10 +23,7 @@ function getUsuario() {
 
     } catch (erro) {
 
-        console.error(
-            "Erro ao ler usuário:",
-            erro
-        );
+        console.error("Erro ao ler usuário:", erro);
 
         localStorage.removeItem("usuario");
 
@@ -45,8 +42,7 @@ function verificarLogin() {
 
     if (!usuario) {
 
-        window.location.href =
-            "login.html";
+        window.location.href = "login.html";
 
         return false;
     }
@@ -63,8 +59,7 @@ function sair() {
 
     localStorage.removeItem("usuario");
 
-    window.location.href =
-        "login.html";
+    window.location.href = "login.html";
 }
 
 
@@ -76,6 +71,28 @@ const permissoes = {
 
     adm: [
         "index",
+        "base",
+        "obras",
+        "imoveis",
+        "criar",
+        "usuarios",
+        "inspecoes",
+        "estoque",
+        "ia",
+        "detalhes_inspecao",
+        "relatorios",
+        "equipe",
+        "solicitacoes",
+        "notificacoes",
+        "perfil",
+        "suporte",
+        "atendimento",
+        "configuracoes"
+    ],
+
+    admin: [
+        "index",
+        "base",
         "obras",
         "imoveis",
         "criar",
@@ -96,6 +113,7 @@ const permissoes = {
 
     engenheiro: [
         "index",
+        "base",
         "obras",
         "imoveis",
         "criar",
@@ -111,6 +129,7 @@ const permissoes = {
 
     inspetor: [
         "index",
+        "base",
         "obras",
         "inspecoes",
         "ia",
@@ -123,6 +142,7 @@ const permissoes = {
 
     tecnico: [
         "index",
+        "base",
         "obras",
         "inspecoes",
         "estoque",
@@ -134,6 +154,7 @@ const permissoes = {
 
     usuario: [
         "index",
+        "base",
         "inspecoes",
         "perfil",
         "notificacoes",
@@ -156,8 +177,31 @@ function temPermissao(pagina) {
         return false;
     }
 
-    const cargo =
-        usuario.nivel_acesso;
+    let cargo = usuario.nivel_acesso;
+
+    if (!cargo) {
+
+        console.warn(
+            "Usuário sem nivel_acesso:",
+            usuario
+        );
+
+        return false;
+    }
+
+    // Normalizar cargo
+    cargo = String(cargo)
+        .trim()
+        .toLowerCase();
+
+    // Compatibilidade com nomes diferentes
+    if (
+        cargo === "administrador" ||
+        cargo === "administradora" ||
+        cargo === "admin"
+    ) {
+        cargo = "adm";
+    }
 
     if (!permissoes[cargo]) {
 
@@ -169,9 +213,7 @@ function temPermissao(pagina) {
         return false;
     }
 
-    return permissoes[cargo].includes(
-        pagina
-    );
+    return permissoes[cargo].includes(pagina);
 }
 
 
@@ -181,36 +223,27 @@ function temPermissao(pagina) {
 
 function controlarMenu() {
 
-    const links =
-        document.querySelectorAll(
-            ".sidebar a"
-        );
+    const links = document.querySelectorAll(".sidebar a");
 
     links.forEach(link => {
 
-        const href =
-            link.getAttribute("href");
+        const href = link.getAttribute("href");
 
-        if (
-            !href ||
-            href === "#"
-        ) {
+        if (!href || href === "#") {
             return;
         }
 
-        let pagina =
-            href
-                .replace(".html", "")
-                .replace("#", "")
-                .trim();
+        let pagina = href
+            .replace(".html", "")
+            .replace("#", "")
+            .trim();
 
         if (
             pagina &&
             !temPermissao(pagina)
         ) {
 
-            link.style.display =
-                "none";
+            link.style.display = "none";
         }
 
     });
@@ -223,35 +256,25 @@ function controlarMenu() {
 
 const paginasEspeciais = {
 
-    "movimentar_estoque":
-        "estoque",
+    "movimentar_estoque": "estoque",
 
-    "novo_imovel":
-        "imoveis",
+    "novo_imovel": "imoveis",
 
-    "nova_obra":
-        "obras",
+    "nova_obra": "obras",
 
-    "nova_inspecao":
-        "inspecoes",
+    "nova_inspecao": "inspecoes",
 
-    "novo_estoque":
-        "estoque",
+    "novo_estoque": "estoque",
 
-    "novo_relatorio":
-        "relatorios",
+    "novo_relatorio": "relatorios",
 
-    "usuarios":
-        "usuarios",
+    "usuarios": "usuarios",
 
-    "solicitacoes":
-        "solicitacoes",
+    "solicitacoes": "solicitacoes",
 
-    "suporte_admin":
-        "atendimento",
+    "suporte_admin": "atendimento",
 
-    "atendimento":
-        "atendimento"
+    "atendimento": "atendimento"
 
 };
 
@@ -262,35 +285,44 @@ const paginasEspeciais = {
 
 function protegerPagina(pagina) {
 
-    const usuario =
-        getUsuario();
+    const usuario = getUsuario();
 
+    // Não está logado
     if (!usuario) {
 
-        window.location.href =
-            "login.html";
+        window.location.href = "login.html";
 
         return false;
     }
 
-    if (
-        paginasEspeciais[pagina]
-    ) {
+    // Normalizar nome da página
+    pagina = String(pagina)
+        .replace(".html", "")
+        .trim()
+        .toLowerCase();
 
-        pagina =
-            paginasEspeciais[pagina];
+    // Converter páginas especiais
+    if (paginasEspeciais[pagina]) {
+
+        pagina = paginasEspeciais[pagina];
     }
 
-    if (
-        !temPermissao(pagina)
-    ) {
+    // Verificar permissão
+    if (!temPermissao(pagina)) {
+
+        console.warn(
+            "Acesso negado.",
+            "Página:",
+            pagina,
+            "Usuário:",
+            usuario
+        );
 
         alert(
             "❌ Você não tem permissão para acessar esta área."
         );
 
-        window.location.href =
-            "index.html";
+        window.location.href = "base.html";
 
         return false;
     }
@@ -307,8 +339,15 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
+        // Primeiro verifica login
+        if (!verificarLogin()) {
+            return;
+        }
+
+        // Controla menus
         controlarMenu();
 
+        // Descobre página atual
         const arquivoAtual =
             window.location.pathname
                 .split("/")
@@ -317,18 +356,26 @@ document.addEventListener(
         const paginaAtual =
             arquivoAtual
                 .replace(".html", "")
-                .trim();
+                .trim()
+                .toLowerCase();
+
+        // Páginas que não precisam dessa proteção
+        const paginasPublicas = [
+            "",
+            "login",
+            "cadastro",
+            "recuperar-senha",
+            "nova-senha"
+        ];
 
         if (
-            paginaAtual !== "" &&
-            paginaAtual !== "login" &&
-            paginaAtual !== "cadastro"
+            paginaAtual &&
+            !paginasPublicas.includes(paginaAtual)
         ) {
 
-            protegerPagina(
-                paginaAtual
-            );
+            protegerPagina(paginaAtual);
         }
 
     }
 );
+```
