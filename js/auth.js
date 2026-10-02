@@ -87,6 +87,7 @@ const permissoes = {
         "suporte",
         "atendimento",
         "configuracoes"
+        "dashboard",
     ],
 
     admin: [
