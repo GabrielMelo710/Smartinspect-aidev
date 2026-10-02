@@ -1,189 +1,93 @@
-<div class="sidebar">
+<aside class="sidebar" aria-label="Menu principal">
 
     <div class="logo-area">
-
-        <img
-            src="imagens/logo.png"
-            class="logo"
-        >
-
-        <h2>
-            SmartInspect AI
-        </h2>
-
+        <span class="brand-mark" aria-hidden="true">SI</span>
+        <h2 class="menu-label">SmartInspect AI</h2>
     </div>
 
-
     <nav>
-
-        <!-- =========================================
-             PRINCIPAL
-        ========================================== -->
-
-        <a href="dashboard.html">
-            📊 Dashboard
+        <a href="dashboard.html" title="Dashboard">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10Zm0 8h8v-6H3v6Zm10 0h8V11h-8v10Zm0-18v6h8V3h-8Z"/></svg></span>
+            <span class="menu-label">Dashboard</span>
         </a>
 
-
-        <a href="imoveis.html">
-            🏠 Imóveis
+        <a href="imoveis.html" title="Imóveis">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"/></svg></span>
+            <span class="menu-label">Imóveis</span>
         </a>
 
-
-        <a href="obras.html">
-            🏢 Obras
+        <a href="obras.html" title="Obras">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v16M3 9h18M7 3v18M12 3v18M17 3v18"/></svg></span>
+            <span class="menu-label">Obras</span>
         </a>
 
-
-        <a href="inspecoes.html">
-            📋 Inspeções
+        <a href="inspecoes.html" title="Inspeções">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12a2 2 0 0 1 2 2v16H4V5a2 2 0 0 1 2-2Zm3 0v4h6V3M8 12h8M8 16h6"/></svg></span>
+            <span class="menu-label">Inspeções</span>
         </a>
 
-
-        <!-- =========================================
-             ESTOQUE
-        ========================================== -->
-
-        <a
-            href="estoque.html"
-            id="menuEstoque"
-        >
-
-            📦 Estoque
-
-            <span
-                id="badgeEstoque"
-                class="menu-badge"
-                style="display:none;"
-            >
-                0
-            </span>
-
+        <a href="estoque.html" id="menuEstoque" title="Estoque">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 5 9 4 9-4M3 17l9 4 9-4"/></svg></span>
+            <span class="menu-label">Estoque</span>
+            <span id="badgeEstoque" class="menu-badge" style="display:none;">0</span>
         </a>
 
-
-        <!-- =========================================
-             RELATÓRIOS
-        ========================================== -->
-
-        <a href="relatorios.html">
-            📄 Relatórios
+        <a href="relatorios.html" title="Relatórios">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm8 0v5h5M8 13h8M8 17h6"/></svg></span>
+            <span class="menu-label">Relatórios</span>
         </a>
 
-
-        <!-- =========================================
-             INTELIGÊNCIA ARTIFICIAL
-        ========================================== -->
-
-        <a href="ia.html">
-            🤖 Inteligência Artificial
+        <a href="ia.html" title="Inteligência Artificial">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 9h6v6H9zM9 1v4m6-4v4M9 19v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4"/></svg></span>
+            <span class="menu-label">Inteligência Artificial</span>
         </a>
-
 
         <hr>
 
-
-        <!-- =========================================
-             EQUIPE
-        ========================================== -->
-
-        <a href="equipe.html">
-            👥 Equipe
+        <a href="equipe.html" title="Equipe">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 14a5 5 0 0 1 6 6"/></svg></span>
+            <span class="menu-label">Equipe</span>
         </a>
 
-
-        <!-- =========================================
-             PERFIL
-        ========================================== -->
-
-        <a href="perfil.html">
-            👤 Meu Perfil
+        <a href="perfil.html" title="Meu Perfil">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            <span class="menu-label">Meu Perfil</span>
         </a>
 
-
-        <!-- =========================================
-             CONTROLE DE USUÁRIOS
-             SOMENTE ADM
-        ========================================== -->
-
-        <a
-            class="admin-only"
-            href="usuarios.html"
-        >
-            ⚙️ Controle de Usuários
+        <a class="admin-only" href="usuarios.html" title="Controle de Usuários">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 14 5.5l3.2-.2.8 3.1 2.8 1.6-1.2 2.9 1.2 2.9-2.8 1.6-.8 3.1-3.2-.2L12 21l-2-2.5-3.2.2-.8-3.1-2.8-1.6 1.2-2.9-1.2-2.9 2.8-1.6.8-3.1 3.2.2L12 3Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <span class="menu-label">Controle de Usuários</span>
         </a>
-
 
         <hr>
 
-
-        <!-- =========================================
-             SUPORTE DO USUÁRIO
-        ========================================== -->
-
-        <a href="suporte.html">
-            💬 Falar Com Suporte
+        <a href="suporte.html" title="Falar com Suporte">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H7l-4 2 1.5-4A8 8 0 1 1 20 11Z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg></span>
+            <span class="menu-label">Falar com Suporte</span>
         </a>
 
-
-        <!-- =========================================
-             ATENDIMENTO
-             SOMENTE ADM
-        ========================================== -->
-
-        <a
-            class="admin-only"
-            href="atendimento.html"
-        >
-            🛠️ Atendimento
+        <a class="admin-only" href="atendimento.html" title="Atendimento">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14.7 6.3 3-3 3 3-3 3M3 21l5.5-1.5L19.2 8.8l-3-3L5.5 17.5 3 21Z"/><path d="m13 8 3 3"/></svg></span>
+            <span class="menu-label">Atendimento</span>
         </a>
 
-
-        <!-- =========================================
-             NOTIFICAÇÕES
-        ========================================== -->
-
-        <a
-            href="notificacoes.html"
-            id="menuNotificacoes"
-        >
-
-            🔔 Notificações
-
-            <span
-                id="badgeNotificacoes"
-                class="menu-badge"
-                style="display:none;"
-            >
-                0
-            </span>
-
+        <a href="notificacoes.html" id="menuNotificacoes" title="Notificações">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg></span>
+            <span class="menu-label">Notificações</span>
+            <span id="badgeNotificacoes" class="menu-badge" style="display:none;">0</span>
         </a>
-
 
         <hr>
 
-
-        <!-- =========================================
-             CONFIGURAÇÕES
-        ========================================== -->
-
-        <a href="configuracoes.html">
-            ⚙️ Configurações
+        <a href="configuracoes.html" title="Configurações">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 14 5.5l3.2-.2.8 3.1 2.8 1.6-1.2 2.9 1.2 2.9-2.8 1.6-.8 3.1-3.2-.2L12 21l-2-2.5-3.2.2-.8-3.1-2.8-1.6 1.2-2.9-1.2-2.9 2.8-1.6.8-3.1 3.2.2L12 3Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <span class="menu-label">Configurações</span>
         </a>
 
-
-        <!-- =========================================
-             SAIR
-        ========================================== -->
-
-        <a
-            href="#"
-            onclick="sair(); return false;"
-        >
-            🚪 Sair
+        <a href="#" onclick="sair(); return false;" title="Sair">
+            <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5M14 16l4-4-4-4M8 12h10"/></svg></span>
+            <span class="menu-label">Sair</span>
         </a>
-
     </nav>
 
-</div>
+</aside>
