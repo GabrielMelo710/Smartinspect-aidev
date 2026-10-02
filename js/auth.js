@@ -1,4 +1,4 @@
-```javascript
+
 // ======================================
 // SMARTINSPECT AI
 // AUTENTICAÇÃO E PERMISSÕES
